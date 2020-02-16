@@ -11,7 +11,12 @@ def index(request):
 
 def detail(request):
 
-    return render(request, 'frontPage/detail.html.html')
+    if request.method == "POST":
+        temp = request.POST.get("temp")
+        ge   = request.POST.get("ge")
+        situation = request.POST.get("situation")
+        return HttpResponse(str(temp)+'\n'+str(ge)+'\n'+str(situation))
+    return render(request, 'frontPage/detail.html')
 
 
 
